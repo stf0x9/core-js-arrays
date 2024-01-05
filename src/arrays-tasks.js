@@ -351,12 +351,9 @@ function calculateBalance(arr) {
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
 function createChunks(arr, chunkSize) {
-  return arr.reduce((result, _, index) => {
-    if (index % chunkSize === 0) {
-      result.push(arr.slice(index, index + chunkSize));
-    }
-    return result;
-  }, []);
+  return Array.from({ length: Math.ceil(arr.length / chunkSize) }, (v, k) => {
+    return arr.slice(k * chunkSize, k * chunkSize + chunkSize);
+  });
 }
 
 /**
