@@ -332,9 +332,10 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([]) => 0
  */
 function calculateBalance(arr) {
-  return arr
-    .map((value) => value[0] - value[1])
-    .reduce((acc, curr) => acc + curr, 0);
+  return arr.reduce(
+    (balance, [income, expense]) => balance + income - expense,
+    0
+  );
 }
 
 /**
